@@ -1,0 +1,55 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[2]:
+
+
+get_ipython().run_line_magic('matplotlib', 'inline')
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# In[3]:
+
+
+def funciton_for_roots(x):
+    a = 1.01
+    b = -3.04
+    c = 2.07
+    return a*x**2 + b*x + c #get the roots of ax^2 + bx + c
+
+
+# In[4]:
+
+
+def check_intial_values(f,x_min, xmax, tol):
+    
+    #check our inital guesses
+    y_min = f(x_min)
+    y_max = f(x_max)
+    
+    #check that x min and x max contain a zero crossing
+    if(y_min*y_max>0.0):
+        print("No zero crossing found in the range = ",x_min,x_max)
+        s = "f(%f) = %f, f(%f) = %f" % (x_min,y_min,x_max,y_max)
+        print(s)
+        return 0
+    
+    #if x_min is a root, the return flaf ==1
+    if(np.fabs(y-min)<tol):
+        return 1
+    
+    #if x_max is a root, then return flag == 2
+    if(np.fabs(y_max)<tol):
+        return 2
+    
+    #if we reach this point, the bracker is valid
+    #and we will return 3
+    return 3
+
+
+# In[ ]:
+
+
+
+
